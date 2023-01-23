@@ -15,7 +15,6 @@ import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerChangedWorldEvent
 import org.bukkit.event.player.PlayerJoinEvent
-import kotlin.math.sqrt
 
 class Multimap : KSpigot() {
     companion object {
