@@ -9,19 +9,23 @@ plugins {
     id("net.minecrell.plugin-yml.bukkit") version "0.5.2"
 }
 
-group = "net.satellyte"
+group = "dev.igalaxy"
 version = "1.0.0"
-description = "My Kotlin Paper Plugin"
+description = "Load existing maps from your Multiverse worlds"
 
 repositories {
     mavenCentral()
     maven("https://papermc.io/repo/repository/maven-public/")
+    maven("https://repo.dmulloy2.net/repository/public/")
+    maven("https://repo.onarandombox.com/content/groups/public/")
 }
 
 dependencies {
     implementation(kotlin("stdlib"))
-    paperDevBundle("1.19.3-R0.1-SNAPSHOT")
-    implementation("net.axay:kspigot:1.19.1")
+    paperDevBundle("1.19.2-R0.1-SNAPSHOT")
+    implementation("net.axay:kspigot:1.19.0")
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0-SNAPSHOT")
+    compileOnly("com.onarandombox.multiversecore:Multiverse-Core:4.3.1")
 }
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
@@ -44,29 +48,19 @@ tasks {
 }
 
 bukkit {
-    name = "Starter"
+    name = "multimap"
     description = description
-    main = "net.satellyte.starter.Starter"
+    main = "dev.igalaxy.multimap.Multimap"
     version = version
     apiVersion = "1.19"
+    depend = listOf("ProtocolLib", "Multiverse-Core")
 }
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            artifactId = "starter"
+            artifactId = "multimap"
             from(components["java"])
-        }
-    }
-    repositories {
-        maven {
-            val releasesRepoUrl = "https://repo.example.com/releases"
-            val snapshotsRepoUrl = "https://repo.example.com/snapshots"
-            url = uri(if (project.hasProperty("release")) releasesRepoUrl else snapshotsRepoUrl)
-            credentials {
-                username = System.getenv("MAVEN_REPO_USERNAME")
-                password = System.getenv("MAVEN_REPO_PASSWORD")
-            }
         }
     }
 }
