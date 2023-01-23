@@ -74,7 +74,7 @@ class Multimap : KSpigot() {
                         )
                         bannerBuf.writeByte(banner.getCompound("Pos").getInt("X"))
                         bannerBuf.writeByte(banner.getCompound("Pos").getInt("Z"))
-                        bannerBuf.writeByte(7)
+                        bannerBuf.writeByte(8)
                         bannerBuf.writeBoolean(banner.getString("Name") != "")
                         if (banner.getString("Name") != "") {
                             bannerBuf.writeComponent(
@@ -84,17 +84,17 @@ class Multimap : KSpigot() {
                     }
                 }
             }}
-            buf.writeByte(sqrt(map.getByteArray("colors").size.toDouble()).toInt())
-            buf.writeByte(sqrt(map.getByteArray("colors").size.toDouble()).toInt())
+            buf.writeByte(128)
+            buf.writeByte(128)
             buf.writeByte(0)
             buf.writeByte(0)
             buf.writeVarInt(map.getByteArray("colors").size)
             var colors = map.getByteArray("colors")
             val colorsCopy = colors.clone()
             for (i in colors.indices) {
-                if (i in 3..16380) {
+                if (i < 16381) {
                     colors[i] = colorsCopy[i + 3]
-                } else if (i >= 3) {
+                } else {
                     colors[i] = colorsCopy[i - 16381]
                 }
             }
