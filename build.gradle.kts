@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "dev.igalaxy"
-version = "1.0.0"
+version = "1.0.1"
 description = "Load existing maps from your Multiverse worlds"
 
 repositories {

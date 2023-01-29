@@ -71,8 +71,8 @@ class Multimap : KSpigot() {
                                 else -> 25
                             }
                         )
-                        bannerBuf.writeByte(banner.getCompound("Pos").getInt("X"))
-                        bannerBuf.writeByte(banner.getCompound("Pos").getInt("Z"))
+                        bannerBuf.writeByte(2 * (banner.getCompound("Pos").getInt("X") - map.getInt("xCenter")))
+                        bannerBuf.writeByte(2 * (banner.getCompound("Pos").getInt("Z") - map.getInt("zCenter")))
                         bannerBuf.writeByte(8)
                         bannerBuf.writeBoolean(banner.getString("Name") != "")
                         if (banner.getString("Name") != "") {
