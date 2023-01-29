@@ -22,8 +22,8 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    paperDevBundle("1.19.2-R0.1-SNAPSHOT")
-    implementation("net.axay:kspigot:1.19.0")
+    paperDevBundle("1.19.3-R0.1-SNAPSHOT")
+    implementation("net.axay:kspigot:1.19.1")
     compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0-SNAPSHOT")
     compileOnly("com.onarandombox.multiversecore:Multiverse-Core:4.3.1")
 }
